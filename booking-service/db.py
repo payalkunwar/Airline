@@ -19,3 +19,13 @@ for i in range(10):
         time.sleep(5)
 
 cursor = connection.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    passenger_name VARCHAR(255),
+    flight_number VARCHAR(50)
+)
+""")
+
+connection.commit()
