@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: airline-ingress
+
+spec:
+  rules:
+  - host: airline.local
+    http:
+      paths:
+
+      - path: /bookings
+        pathType: Prefix
+        backend:
+          service:
+            name: booking-service
+            port:
+              number: 5000
+
+      - path: /payment
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-service
+            port:
+              number: 5001
+
+      - path: /ticket
+        pathType: Prefix
+        backend:
+          service:
+            name: ticket-service
+            port:
+              number: 5002
